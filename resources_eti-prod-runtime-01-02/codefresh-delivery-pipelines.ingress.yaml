@@ -13,3 +13,10 @@ spec:
                 port:
                   number: 80
             pathType: ImplementationSpecific
+          - path: /webhooks/test123
+            backend:
+              service:
+                name: test123-eventsource-svc
+                port:
+                  number: 80
+            pathType: ImplementationSpecific
