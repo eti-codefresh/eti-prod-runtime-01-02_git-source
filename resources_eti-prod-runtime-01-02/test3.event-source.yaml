@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: test3
+spec:
+  eventBusName: codefresh-eventbus
+  service:
+    ports:
+      - port: 80
+  template:
+    serviceAccountName: argo-server
+  github:
+    github-d6f3cebe-6403-40cc-ac7f-39511cc13577:
+      events:
+        - push
+      repositories:
+        - owner: repo
+          names:
+            - null
+      webhook:
+        port: '80'
+        method: POST
+        endpoint: /webhooks/test3/github-d6f3cebe-6403-40cc-ac7f-39511cc13577
+        url: https://eti-demo.pipeline-team.cf-cd.com
+      active: true
+      insecure: false
+      contentType: json
+      deleteHookOnFinish: true
+      apiToken:
+        name: autopilot-secret
+        key: git_token
