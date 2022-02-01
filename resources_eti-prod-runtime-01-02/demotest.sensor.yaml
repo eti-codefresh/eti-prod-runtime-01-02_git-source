@@ -53,7 +53,7 @@ spec:
                     - name: DOCKERFILE
                       value: ''
                     - name: GIT_TOKEN_SECRET
-                      value: ''
+                      value: 'github-token'
                     - name: CONTEXT
                       value: ''
                     - name: REGISTRY_CREDS_SECRET
