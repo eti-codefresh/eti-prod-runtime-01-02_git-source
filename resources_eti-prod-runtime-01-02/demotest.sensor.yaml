@@ -43,7 +43,7 @@ spec:
                     - name: IMAGE_TAG
                       value: ''
                     - name: GIT_REVISION
-                      value: ''
+                      value: 'main'
                     - name: GIT_BRANCH
                       value: ''
                     - name: GIT_COMMIT_URL
