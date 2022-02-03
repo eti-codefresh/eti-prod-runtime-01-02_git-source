@@ -52,14 +52,14 @@ spec:
                       value: ''
                     - name: DOCKERFILE
                       value: ''
-                    - name: GIT_TOKEN_SECRET
-                      value: ''
-                    - name: CONTEXT
-                      value: ''
-                    - name: REGISTRY_CREDS_SECRET
-                      value: ''
-                    - name: DOCKER_CONFIG_SECRET
-                      value: ''
+#                     - name: GIT_TOKEN_SECRET
+#                       value: ''
+#                     - name: CONTEXT
+#                       value: ''
+#                     - name: REGISTRY_CREDS_SECRET
+#                       value: ''
+#                     - name: DOCKER_CONFIG_SECRET
+#                       value: ''
                 workflowTemplateRef:
                   name: ci-simple
           parameters: []
