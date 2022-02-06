@@ -5,6 +5,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: ci-simple
+  namespace: lala
 spec:
   serviceAccountName: argo5
   volumes:
