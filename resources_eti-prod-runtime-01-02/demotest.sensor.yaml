@@ -43,7 +43,7 @@ spec:
                     - name: IMAGE_TAG
                       value: ''
                     - name: GIT_REVISION
-                      value: 'main'
+                      value: main
                     - name: GIT_BRANCH
                       value: ''
                     - name: GIT_COMMIT_URL
@@ -51,11 +51,11 @@ spec:
                     - name: GIT_COMMIT_MESSAGE
                       value: ''
                     - name: DOCKERFILE
-                      value: 'Dockerfile'
+                      value: Dockerfile
                     - name: GIT_TOKEN_SECRET
-                      value: 'github-token'
+                      value: github-token
                     - name: CONTEXT
-                      value: '.'
+                      value: .
                     - name: REGISTRY_CREDS_SECRET
                       value: ''
                     - name: DOCKER_CONFIG_SECRET

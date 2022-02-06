@@ -6,6 +6,7 @@ kind: WorkflowTemplate
 metadata:
   name: ci-simple
 spec:
+  serviceAccountName: argo5
   volumes:
     - name: docker-config
       secret:
