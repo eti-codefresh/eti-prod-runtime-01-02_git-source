@@ -7,7 +7,7 @@ metadata:
   name: ci-simple
 #   namespace: my-local-runtime-02-02
 spec:
-  serviceAccountName: argo5
+#   serviceAccountName: argo5
   volumes:
     - name: docker-config
       secret:
