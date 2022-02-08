@@ -36,6 +36,8 @@ spec:
               spec:
                 arguments:
                   parameters:
+                    - name: GIT_BRANCH
+                      value: master
                     - name: GIT_REPO_URL
                       value: ''
                     - name: IMAGE_NAME
@@ -46,8 +48,12 @@ spec:
             - dest: spec.arguments.parameters.0.value
               src:
                 dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
-                dataTemplate: https://github.com/codefresh-io/cli
+                dataTemplate: master
             - dest: spec.arguments.parameters.1.value
+              src:
+                dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
+                dataTemplate: https://github.com/codefresh-io/cli
+            - dest: spec.arguments.parameters.2.value
               src:
                 dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
                 dataTemplate: quay.io/eti_zaguri/test
