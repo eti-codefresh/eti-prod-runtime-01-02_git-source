@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: tetsfgg
+spec:
+  template:
+    serviceAccountName: argo-server
+  eventBusName: codefresh-eventbus
+  dependencies:
+    - name: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
+      eventName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
+      eventSourceName: tetsfgg
+      filters:
+        data:
+          - path: body.X-GitHub-Event
+            value:
+              - push
+            type: string
+          - path: body.ref
+            template: '{{ (split "/" .Input)._1 }}'
+            value:
+              - heads
+            type: string
+  triggers:
+    - template:
+        name: push
+        conditions: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
+        argoWorkflow:
+          operation: submit
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: WorkflowTemplate
+              metadata:
+                generateName: tetsfgg-push-
+              spec:
+                arguments:
+                  parameters:
+                    - name: GIT_REPO_URL
+                      value: ''
+                    - name: IMAGE_NAME
+                      value: ''
+                workflowTemplateRef:
+                  name: ci-simple
+          parameters:
+            - dest: spec.arguments.parameters.0.value
+              src:
+                dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
+                dataTemplate: https://github.com/codefresh-io/cli
+            - dest: spec.arguments.parameters.1.value
+              src:
+                dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
+                dataTemplate: quay.io/eti_zaguri/test

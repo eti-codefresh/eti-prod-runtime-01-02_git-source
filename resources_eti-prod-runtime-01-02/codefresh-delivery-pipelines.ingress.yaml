@@ -34,3 +34,10 @@ spec:
                 port:
                   number: 80
             pathType: ImplementationSpecific
+          - path: /webhooks/tetsfgg
+            backend:
+              service:
+                name: tetsfgg-eventsource-svc
+                port:
+                  number: 80
+            pathType: ImplementationSpecific
