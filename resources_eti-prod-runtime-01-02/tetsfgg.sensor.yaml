@@ -54,7 +54,7 @@ spec:
             - dest: spec.arguments.parameters.1.value
               src:
                 dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
-                dataTemplate: master
+                dataTemplate: master2
             - dest: spec.arguments.parameters.2.value
               src:
                 dependencyName: github-97c5c49c-bbcc-4444-8cd9-91e89c381b8e
