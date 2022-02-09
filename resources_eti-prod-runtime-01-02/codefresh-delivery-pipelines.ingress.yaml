@@ -41,3 +41,10 @@ spec:
                 port:
                   number: 80
             pathType: ImplementationSpecific
+          - path: /webhooks/csdp-ci
+            backend:
+              service:
+                name: csdp-ci-eventsource-svc
+                port:
+                  number: 80
+            pathType: ImplementationSpecific

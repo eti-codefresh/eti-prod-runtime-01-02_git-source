@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: csdp-ci
+spec:
+  eventBusName: codefresh-eventbus
+  service:
+    ports:
+      - port: 80
+  template:
+    serviceAccountName: argo-server
+  github:
+    github-4d55e75d-94a2-4f34-9271-756344798175:
+      events:
+        - push
+      repositories:
+        - owner: NimRegev
+          names:
+            - NimLearning
+      webhook:
+        port: '80'
+        method: POST
+        endpoint: /webhooks/csdp-ci/github-4d55e75d-94a2-4f34-9271-756344798175
+        url: https://eti-demo.pipeline-team.cf-cd.com
+      active: true
+      insecure: false
+      contentType: json
+      deleteHookOnFinish: true
+      apiToken:
+        name: autopilot-secret
+        key: git_token

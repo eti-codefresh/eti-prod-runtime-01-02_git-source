@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: csdp-ci
+spec:
+  template:
+    serviceAccountName: argo-server
+  eventBusName: codefresh-eventbus
+  dependencies:
+    - name: github-4d55e75d-94a2-4f34-9271-756344798175
+      eventName: github-4d55e75d-94a2-4f34-9271-756344798175
+      eventSourceName: csdp-ci
+      filters:
+        data:
+          - path: body.X-GitHub-Event
+            value:
+              - push
+            type: string
+          - path: body.ref
+            template: '{{ (split "/" .Input)._1 }}'
+            value:
+              - heads
+            type: string
+  triggers:
+    - template:
+        name: git-push
+        conditions: github-4d55e75d-94a2-4f34-9271-756344798175
+        argoWorkflow:
+          operation: submit
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: WorkflowTemplate
+              metadata:
+                generateName: csdp-ci-git-push-
+              spec:
+                arguments:
+                  parameters:
+                    - name: GIT_REPO_URL
+                      value: https://github.com/NimRegev/NimLearning
+                    - name: IMAGE_NAME
+                      value: ''
+                    - name: IMAGE_TAG
+                      value: ''
+                workflowTemplateRef:
+                  name: ci-simple
+          parameters:
+            - dest: spec.arguments.parameters.0.value
+              src:
+                dependencyName: github-4d55e75d-94a2-4f34-9271-756344798175
+                dataTemplate: '{{ .Input.body.repository.name }}'
+            - dest: spec.arguments.parameters.2.value
+              src:
+                dependencyName: github-4d55e75d-94a2-4f34-9271-756344798175
+                dataTemplate: '1.0'
