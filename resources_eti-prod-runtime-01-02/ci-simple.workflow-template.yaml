@@ -104,7 +104,7 @@ spec:
                   value: '{{ inputs.parameters.REGISTRY_CREDS_SECRET }}'
             depends: build-docker-image
 
-          - name: test-image
+          - name: test image
             template: test
             arguments:
               parameters:
