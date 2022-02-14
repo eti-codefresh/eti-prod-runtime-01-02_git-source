@@ -55,7 +55,7 @@ spec:
       dag:
         tasks:
           # https://codefresh.io/argohub/workflow-template/kaniko
-          - name: build docker-image
+          - name: build-docker-image
             templateRef:
               name: argo-hub.kaniko.0.0.1
               template: build
@@ -103,7 +103,7 @@ spec:
                   value: '{{ inputs.parameters.REGISTRY_CREDS_SECRET }}'
             depends: build-docker-image
 
-          - name: test-image
+          - name: test@image
             template: test
             arguments:
               parameters:
