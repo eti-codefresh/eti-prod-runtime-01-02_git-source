@@ -55,7 +55,7 @@ spec:
       dag:
         tasks:
           # https://codefresh.io/argohub/workflow-template/kaniko
-          - name: buildDocker-image
+          - name: build docker-image
             templateRef:
               name: argo-hub.kaniko.0.0.1
               template: build
