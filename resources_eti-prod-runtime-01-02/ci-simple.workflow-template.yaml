@@ -5,6 +5,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   name: ci-simple
+  namespace: argo5
 spec:
   volumes:
     - name: docker-config
@@ -103,7 +104,7 @@ spec:
                   value: '{{ inputs.parameters.REGISTRY_CREDS_SECRET }}'
             depends: build-docker-image
 
-          - name: -testImage
+          - name: test-image
             template: test
             arguments:
               parameters:
