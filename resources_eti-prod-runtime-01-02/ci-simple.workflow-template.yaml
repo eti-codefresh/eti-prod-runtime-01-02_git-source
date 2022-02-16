@@ -111,7 +111,7 @@ spec:
                   value: '{{ inputs.parameters.IMAGE_NAME }}:{{ inputs.parameters.IMAGE_TAG }}'
             depends: report-image-info
 
-    # Test template jbkvb
+    # Test template jbkjhghjkjhg987656789
     - name: test
       inputs:
         parameters:
