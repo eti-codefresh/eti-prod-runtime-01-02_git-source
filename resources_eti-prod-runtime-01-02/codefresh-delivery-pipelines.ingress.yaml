@@ -48,3 +48,10 @@ spec:
                 port:
                   number: 80
             pathType: ImplementationSpecific
+          - path: /webhooks/test4
+            backend:
+              service:
+                name: test4-eventsource-svc
+                port:
+                  number: 80
+            pathType: ImplementationSpecific
