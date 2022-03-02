@@ -15,7 +15,7 @@ metadata:
     argo-hub/icon-background: "#004C76"
 spec:
   volumes:
-    - name: docker-config
+    - name: docker-config #jjgjgj
       secret:
         items:
           - key: .dockerconfigjson
