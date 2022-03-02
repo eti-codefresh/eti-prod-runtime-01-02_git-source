@@ -125,7 +125,7 @@ spec:
                   value: '{{ inputs.parameters.IMAGE_NAME }}:{{ inputs.parameters.IMAGE_TAG }}'
             depends: report-image-info
 
-    # Test template hghj
+    # Test template hgccgc
     - name: test
       serviceAccountName: argo-hub.ci-simple.0.0.1
       metadata:
